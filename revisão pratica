@@ -1,0 +1,414 @@
+Atividade 01
+
+public class Carro {
+    private String marca;
+    private String modelo;
+    private int ano;
+    private String cor;
+
+    
+    public Carro(String marca, String modelo, int ano, String cor) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.cor = cor;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public void exibirInformacoes() {
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Ano: " + ano);
+        System.out.println("Cor: " + cor);
+    }
+
+    public static void main(String[] args) {
+        Carro carro1 = new Carro("VolksWagen", "Gol", 2004, "Branco");
+        Carro carro2 = new Carro("Ford", "Focus", 2024, "Preto");
+
+        System.out.println("Informações do Carro 1:");
+        carro1.exibirInformacoes();
+
+        System.out.println("\nInformações do Carro 2:");
+        carro2.exibirInformacoes();
+
+        carro1.setCor("Vermelho");
+        System.out.println("\nInformações do Carro 1 após modificação:");
+        carro1.exibirInformacoes();
+
+        carro2.setCor("Preto Fosco");
+        System.out.println("\nInformações do Carro 2 após modificação:");
+        carro2.exibirInformacoes();
+    }
+}
+
+ATIVIDADE 02
+
+  public class Produto {
+    private String nome;
+    private double preco;
+    private int quantidadeEmEstoque;
+
+    public Produto(String nome, double preco, int quantidadeEmEstoque) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public int getQuantidadeEmEstoque() {
+        return quantidadeEmEstoque;
+    }
+
+    public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+
+    public void exibirInformacoes() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Preço: R$" + preco);
+        System.out.println("Quantidade em Estoque: " + quantidadeEmEstoque);
+    }
+
+    public static void main(String[] args) {
+        Produto produto1 = new Produto("Lápis", 4.5, 100);
+        Produto produto2 = new Produto("Estojo de Unicórnio", 20.0, 50);
+
+        System.out.println("Informações Primeiro Produto :");
+        produto1.exibirInformacoes();
+
+        System.out.println("Informações do Segundo Produto :");
+        produto2.exibirInformacoes();
+
+        produto1.setPreco(1.8);
+        produto1.setQuantidadeEmEstoque(120);
+        System.out.println("Informações do Primeiro produto após modificação:");
+        produto1.exibirInformacoes();
+
+        produto2.setPreco(32.8);
+        produto2.setQuantidadeEmEstoque(204);
+        System.out.println("Informações do Segundo produto após modificação:");
+        produto2.exibirInformacoes();
+    }
+}
+ATIVIDADE 03
+
+public class Produto {
+    private String nome;
+    private double preco;
+    private int quantidadeEmEstoque;
+
+
+    public Produto(String nome, double preco, int quantidadeEmEstoque) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public int getQuantidadeEmEstoque() {
+        return quantidadeEmEstoque;
+    }
+
+    public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+}
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Produto> estoque = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+
+            System.out.println("1. Adicionar novo produto");
+            System.out.println("2. Atualizar preço ou quantidade em estoque");
+            System.out.println("3. Exibir detalhes de um produto");
+            System.out.println("4. Sair");
+            System.out.print("Escolha uma opção: ");
+            int opcao = scanner.nextInt();
+
+            if (opcao == 1) {
+                System.out.print("Digite o nome do produto: ");
+                scanner.nextLine(); // Consumir a quebra de linha
+                String nome = scanner.nextLine();
+                System.out.print("Digite o preço do produto: ");
+                double preco = scanner.nextDouble();
+                System.out.print("Digite a quantidade em estoque do produto: ");
+                int quantidade = scanner.nextInt();
+
+                Produto novoProduto = new Produto(nome, preco, quantidade);
+                estoque.add(novoProduto);
+                System.out.println("Produto adicionado ao estoque com sucesso!");
+            } else if (opcao == 2) {
+                if (estoque.isEmpty()) {
+                    System.out.println("Nenhum produto cadastrado no estoque.");
+                } else {
+                    System.out.print("Digite o nome do produto que deseja atualizar: ");
+                    scanner.nextLine(); 
+                    String nomeProduto = scanner.nextLine();
+
+                    boolean produtoEncontrado = false;
+                    for (Produto produto : estoque) {
+                        if (produto.getNome().equalsIgnoreCase(nomeProduto)) {
+                            System.out.print("Digite o novo preço do produto: ");
+                            double novoPreco = scanner.nextDouble();
+                            produto.setPreco(novoPreco);
+
+                            System.out.print("Digite a nova quantidade em estoque do produto: ");
+                            int novaQuantidade = scanner.nextInt();
+                            produto.setQuantidadeEmEstoque(novaQuantidade);
+
+                            produtoEncontrado = true;
+                            System.out.println("Produto atualizado com sucesso!");
+                            break;
+                        }
+                    }
+
+                    if (!produtoEncontrado) {
+                        System.out.println("Produto não encontrado no estoque.");
+                    }
+                }
+            } else if (opcao == 3) {
+                if (estoque.isEmpty()) {
+                    System.out.println("Nenhum produto cadastrado no estoque.");
+                } else {
+                    System.out.print("Digite o nome do produto que deseja visualizar: ");
+                    scanner.nextLine();
+                    String nomeProduto = scanner.nextLine();
+
+                    boolean produtoEncontrado = false;
+                    for (Produto produto : estoque) {
+                        if (produto.getNome().equalsIgnoreCase(nomeProduto)) {
+                            System.out.println("\nDetalhes do produto:");
+                            System.out.println("Nome: " + produto.getNome());
+                            System.out.println("Preço: R$" + produto.getPreco());
+                            System.out.println("Quantidade em Estoque: " + produto.getQuantidadeEmEstoque());
+                            produtoEncontrado = true;
+                            break;
+                        }
+                    }
+
+                    if (!produtoEncontrado) {
+                        System.out.println("Produto não encontrado no estoque.");
+                    }
+                }
+            } else if (opcao == 4) {
+                System.out.println("Encerrando o programa...");
+                break;
+            } else {
+                System.out.println("Opção inválida! Por favor, escolha uma opção válida.");
+            }
+        }
+        scanner.close();
+    }
+}
+
+ATIVIDADE 04
+
+import java.util.Scanner;
+
+public class Circulo {
+    private double raio;
+    private String cor;
+
+    
+    public Circulo(double raio, String cor) {
+        this.raio = raio;
+        this.cor = cor;
+    }
+
+    public double getRaio() {
+        return raio;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public double calcularArea() {
+        return Math.PI * raio * raio;
+    }
+
+    public double calcularPerimetro() {
+        return 2 * Math.PI * raio;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Informe o raio do círculo:");
+        double raio = scanner.nextDouble();
+
+        System.out.println("Informe a cor do círculo:");
+        scanner.nextLine();
+        String cor = scanner.nextLine();
+
+        Circulo circulo = new Circulo(raio, cor);
+
+        System.out.println("Círculo:");
+        System.out.println("Raio: " + circulo.getRaio());
+        System.out.println("Cor: " + circulo.getCor());
+        System.out.println("Área: " + circulo.calcularArea());
+        System.out.println("Perímetro: " + circulo.calcularPerimetro());
+
+        scanner.close();
+    }
+}
+
+ATIVIDADE 05
+
+package Objeto;
+
+public class Produto {
+
+    private final String nome;
+    private final double preco;
+    private final int quantEstoque;
+
+    public Produto(String nome){
+        this.nome = nome;
+        this.preco = 0.0;
+        this.quantEstoque = 0;
+    }
+
+    public Produto(String nome, double preco){
+        this.nome = nome;
+        this.preco = preco;
+        this.quantEstoque = 0;
+    }
+
+    public Produto(String nome, double preco, int quantEstoque){
+        this.nome = nome;
+        this.preco = preco;
+        this.quantEstoque = quantEstoque;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public int getQuantEstoque() {
+        return quantEstoque;
+    }
+
+}
+
+package Main;
+import br.unipar.objetos.Produto;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Criação de objeto (Produto) com o 1º construtor;
+        Produto produto1 = new Produto("Produto A");
+        System.out.println("Produto 1:");
+        System.out.println("Nome: " + produto1.getNome());
+        System.out.println("Preço: " + produto1.getPreco());
+        System.out.println("Quantidade em estoque: " + produto1.getQuantEstoque());
+        System.out.println(" ");
+
+        // Criação de objeto (Produto) com o 2º construtor;
+
+        System.out.print("Digite o nome do Produto B: ");
+        String nomeProdutoB = scanner.nextLine();
+        System.out.print("Digite o preço do Produto B: ");
+        double precoProdutoB = scanner.nextDouble();
+        Produto produto2 = new Produto(nomeProdutoB, precoProdutoB);
+        System.out.println();
+        System.out.println("Produto 2:");
+        System.out.println("Nome: " + produto2.getNome());
+        System.out.println("Preço: " + produto2.getPreco());
+        System.out.println("Quantidade em estoque: " + produto2.getQuantEstoque());
+        System.out.println();
+
+        // Criação de obejto (Produto) com o 3º construtor;
+
+        System.out.print("Digite o nome do Produto C: ");
+        scanner.nextLine();
+        String nomeProdutoC = scanner.next();
+        System.out.print("Digite o preço do Produto C: ");
+        double precoProdutoC = scanner.nextDouble();
+        System.out.print("Digite a quantidade de estoque do Produto C: ");
+        int estoqueProdutoC = scanner.nextInt();
+        Produto produto3 = new Produto(nomeProdutoC, precoProdutoC, estoqueProdutoC);
+        System.out.println();
+        System.out.println("Produto 3:");
+        System.out.println("Nome: " + produto3.getNome());
+        System.out.println("Preço: " + produto3.getPreco());
+        System.out.println("Quantidade em estoque: " + produto3.getQuantEstoque());
+
+        scanner.close();
+    }
+}
